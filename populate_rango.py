@@ -18,7 +18,9 @@ def populate():
 		{'title':'How to Think like a Computer Scientist',
 		'url':'http://www.greenteapress.com/thinkpython/'},
 		{'title':'Learn Python in 10 Minutes',
-		'url':'http://www.korokithakis.net/tutorials/python/'} ]
+		'url':'http://www.korokithakis.net/tutorials/python/'},
+		{'title':'Google',
+		'url':'http://www.google.com/'} ]
 
 
 	django_pages = [
@@ -27,13 +29,17 @@ def populate():
 		{'title':'Django Rocks',
 		'url':'http://www.djangorocks.com/'},
 		{'title':'How to Tango with Django',
-		'url':'http://www.tangowithdjango.com/'} ]
+		'url':'http://www.tangowithdjango.com/'},
+		{'title':'Google',
+		'url':'http://www.google.com/'} ]
 
 	other_pages = [
 		{'title':'Bottle',
 		'url':'http://bottlepy.org/docs/dev/'},
 		{'title':'Flask',
-		'url':'http://flask.pocoo.org'} ]
+		'url':'http://flask.pocoo.org'},
+		{'title':'Google',
+		'url':'http://www.google.com/'} ]
 
 	cats = {'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
 			'Django': {'pages': django_pages, 'views': 64, 'likes': 32},
@@ -54,7 +60,7 @@ def populate():
 		for p in Page.objects.filter(category=c):
 			print(f'- {c}: {p}')
 
-def add_page(cat, title, url, views=0):
+def add_page(cat, title, url, views=5):
 	p = Page.objects.get_or_create(category=cat, title=title)[0]
 	p.url=url
 	p.views=views
