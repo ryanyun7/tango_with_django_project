@@ -19,8 +19,10 @@ def populate():
 		'url':'http://www.greenteapress.com/thinkpython/'},
 		{'title':'Learn Python in 10 Minutes',
 		'url':'http://www.korokithakis.net/tutorials/python/'},
-		{'title':'Google',
-		'url':'http://www.google.com/'} ]
+		{'title':'Rango',
+		'url':'https://www.imdb.com/title/tt1192628/'},
+		{'title':'Rango_Trivia',
+		'url':'https://www.imdb.com/title/tt1192628/trivia?ref_=tt_ql_2'}]
 
 
 	django_pages = [
@@ -30,16 +32,22 @@ def populate():
 		'url':'http://www.djangorocks.com/'},
 		{'title':'How to Tango with Django',
 		'url':'http://www.tangowithdjango.com/'},
-		{'title':'Google',
-		'url':'http://www.google.com/'} ]
+		{'title':'Rango',
+		'url':'https://www.imdb.com/title/tt1192628/'},
+		{'title':'Rango_Trivia',
+		'url':'https://www.imdb.com/title/tt1192628/trivia?ref_=tt_ql_2'}]
 
 	other_pages = [
 		{'title':'Bottle',
 		'url':'http://bottlepy.org/docs/dev/'},
 		{'title':'Flask',
 		'url':'http://flask.pocoo.org'},
-		{'title':'Google',
-		'url':'http://www.google.com/'} ]
+		{'title':'Rango',
+		'url':'https://www.imdb.com/title/tt1192628/'},
+		{'title':'Rango',
+		'url':'https://www.imdb.com/title/tt1192628/'},
+		{'title':'Rango_Trivia',
+		'url':'https://www.imdb.com/title/tt1192628/trivia?ref_=tt_ql_2'}]
 
 	cats = {'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
 			'Django': {'pages': django_pages, 'views': 64, 'likes': 32},
@@ -69,8 +77,8 @@ def add_page(cat, title, url, views=5):
 
 def add_cat(name, views=0, likes=0):
 	c = Category.objects.get_or_create(name=name)[0]
-	c = Category.objects.get_or_create(views=views)[0]
-	c = Category.objects.get_or_create(likes=likes)[0]
+	c.views=views
+	c.likes=likes
 	c.save()
 	return c
 
