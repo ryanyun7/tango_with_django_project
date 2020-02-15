@@ -5,6 +5,7 @@ from rango.models import Page
 from rango.forms import CategoryForm
 from django.shortcuts import redirect
 from rango.forms import PageForm
+from django.urls import reverse
 
 
 def index(request) :
@@ -26,9 +27,12 @@ def index(request) :
 
 
 
-def about(request) :
-	context_dict = {'boldmessage': 'This tutorial has been put together by Ryan.'}
-	return render(request, 'rango/about.html', context=context_dict)
+def about(request):
+# prints out whether the method is a GET or a POST
+	print(request.method)
+	# prints out the user name, if no one is logged in it prints `AnonymousUser`
+	print(request.user)
+	return render(request, 'rango/about.html', {})
 
 
 
@@ -108,6 +112,6 @@ def add_page(request, category_name_slug):
 												category_name_slug}))
 		else:
 			print(form.errors)
-			
+
 	context_dict = {'form': form, 'category': category}
 	return render(request, 'rango/add_page.html', context=context_dict)
