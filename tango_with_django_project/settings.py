@@ -127,6 +127,7 @@ PASSWORD_HASHERS = [
 
 STATICFILES_DIRS = [STATIC_DIR,]
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
